@@ -159,18 +159,19 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
 .hours{display:inline-grid;grid-template-columns:auto auto;column-gap:28px;row-gap:5px;margin:6px 0 2px;font-family:var(--f-body);font-size:15.5px;color:var(--cream);}
 .hours span:nth-child(odd){text-align:left;}
 .hours span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;}
-.dr-section{font-family:var(--f-caps);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:5px;margin-bottom:8px;margin-top:10px;display:flex;align-items:center;gap:10px;}
-.dr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.dr-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.dr-card{display:flex;flex-direction:column;background:rgba(8,20,10,0.6);border:1px solid rgba(193,144,8,0.28);overflow:hidden;}
-.dr-img-wrap{height:105px;overflow:hidden;background:rgba(5,14,7,0.75);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.dr-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.6));display:block;}
-.dr-emoji{font-size:38px;line-height:1;}
-.dr-body{padding:7px 8px 8px;flex:1;display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid rgba(193,144,8,0.18);}
-.dr-name{font-family:var(--f-serif);font-size:15px;font-weight:600;color:var(--cream);line-height:1.2;}
-.dr-sub{font-family:var(--f-body);font-size:10px;color:rgba(242,236,216,0.45);font-style:italic;margin-top:1px;}
-.dr-dari{font-family:var(--f-naskh);font-size:13px;color:var(--dari);direction:rtl;margin-top:1px;}
-.dr-price{font-family:var(--f-caps);font-size:15px;font-weight:800;color:var(--gold);margin-top:5px;}
+.dr-section{font-family:var(--f-caps);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:5px;margin-bottom:10px;margin-top:12px;display:flex;align-items:center;gap:10px;}
+.dr-cat-row{display:flex;gap:18px;align-items:stretch;}
+.dr-cat-photo{width:230px;flex-shrink:0;border:1px solid rgba(193,144,8,0.35);overflow:hidden;background:rgba(5,14,7,0.75);}
+.dr-cat-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.dr-list{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;}
+.dr-list-item{display:flex;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(193,144,8,0.14);gap:6px;}
+.dr-list-item:last-child{border-bottom:none;}
+.li-left{display:flex;flex-direction:column;flex-shrink:0;}
+.li-name{font-family:var(--f-serif);font-size:16px;font-weight:600;color:var(--cream);line-height:1.2;}
+.li-dari{font-family:var(--f-naskh);font-size:12px;color:var(--dari);direction:rtl;}
+.li-sub{font-family:var(--f-body);font-size:10px;color:rgba(242,236,216,0.45);font-style:italic;}
+.li-dots{flex:1;border-bottom:1px dotted rgba(193,144,8,0.4);margin-bottom:3px;min-width:20px;}
+.li-price{font-family:var(--f-caps);font-size:15px;font-weight:800;color:var(--gold);flex-shrink:0;}
 /* ── ELEGANT COVER LAYOUT ── */
 .cov-wrap{position:absolute;inset:14mm;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:8px 44px 14px;}
 .cov-hband{width:100%;display:flex;flex-direction:column;align-items:center;}
@@ -276,7 +277,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
           <div class="dish-rule"></div>
           <p class="dish-desc">Knusprig frittierte Teigtaschen gefüllt mit Gemüse, Kartoffeln & Sauce · 1 Stk.: 2,50 € / 2 Stk.: 4,99 €</p>
         </div>
-        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_28.png" alt="Samosa" style="transform:scale(1)"></div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_28.png" alt="Samosa" style="transform:scaleX(-1) scale(1)"></div>
       </div>
       <div class="item">
         <div class="bubble">
@@ -291,7 +292,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
           <div class="dish-rule"></div>
           <p class="dish-desc">Gebackenes Fladenbrot gefüllt mit Kartoffeln, Koriander & Gewürzen</p>
         </div>
-        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_29.png" alt="Bolani Kachalo" style="transform:scale(1)"></div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_29.png" alt="Bolani Kachalo" style="transform:scaleX(-1) scale(1)"></div>
       </div>
   </div>
 </div></div>
@@ -857,20 +858,26 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
   </div>
   <div style="position:absolute;inset:0;top:162px;bottom:22px;left:26px;right:26px;z-index:5;">
 <div class="dr-section">Getränke<span style="font-family:var(--f-naskh);font-size:15px;color:var(--dari);">نوشیدنی</span></div>
-<div class="dr-grid"><div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_37.png"></div><div class="dr-body"><div><div class="dr-name">Cola</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_38.png"></div><div class="dr-body"><div><div class="dr-name">Cola Zero</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_36.png"></div><div class="dr-body"><div><div class="dr-name">Mezzo Mix</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍏</div></div><div class="dr-body"><div><div class="dr-name">Apfelschorle</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_35.png"></div><div class="dr-body"><div><div class="dr-name">Wasser still</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_35.png"></div><div class="dr-body"><div><div class="dr-name">Wasser sprudel</div></div><div class="dr-price">2,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🧋</div></div><div class="dr-body"><div><div class="dr-name">Dough</div><div class="dr-dari" dir="rtl">دوغ</div><div class="dr-sub">Joghurt-Drink</div></div><div class="dr-price">3,00 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍵</div></div><div class="dr-body"><div><div class="dr-name">Tee</div><div class="dr-dari" dir="rtl">چای</div></div><div class="dr-price">1,50 €</div></div></div>
+<div class="dr-cat-row">
+  <div class="dr-cat-photo"><img src="images/_mk_cache/drink_37.png"></div>
+  <div class="dr-list"><div class="dr-list-item"><div class="li-left"><div class="li-name">Cola</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Cola Zero</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Mezzo Mix</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Apfelschorle</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Wasser still</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Wasser sprudel</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Dough</div><div class="li-dari" dir="rtl">دوغ</div><div class="li-sub">Joghurt-Drink</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Tee</div><div class="li-dari" dir="rtl">چای</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
 </div>
-<div style="margin-top:12px;">
+</div>
+<div style="margin-top:16px;">
 <div class="dr-section">Süßigkeiten<span style="font-family:var(--f-naskh);font-size:15px;color:var(--dari);">شیرینی</span></div>
-<div class="dr-grid-3"><div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍯</div></div><div class="dr-body"><div><div class="dr-name">Jelabi</div><div class="dr-dari" dir="rtl">جلبی</div><div class="dr-sub">pro Stück</div></div><div class="dr-price">1,50 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍮</div></div><div class="dr-body"><div><div class="dr-name">Afghanischer Pudding</div><div class="dr-dari" dir="rtl">فرنی</div></div><div class="dr-price">3,00 €</div></div></div>
-<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍨</div></div><div class="dr-body"><div><div class="dr-name">Afghanisches Eis-Creme</div><div class="dr-dari" dir="rtl">آیس کریم</div></div><div class="dr-price">4,00 €</div></div></div>
+<div class="dr-cat-row">
+  <div class="dr-cat-photo"><img src="images/_mk_cache/drink_35.png"></div>
+  <div class="dr-list"><div class="dr-list-item"><div class="li-left"><div class="li-name">Jelabi</div><div class="li-dari" dir="rtl">جلبی</div><div class="li-sub">pro Stück</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Afghanischer Pudding</div><div class="li-dari" dir="rtl">فرنی</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
+<div class="dr-list-item"><div class="li-left"><div class="li-name">Afghanisches Eis-Creme</div><div class="li-dari" dir="rtl">آیس کریم</div></div><div class="li-dots"></div><div class="li-price">4,00 €</div></div>
+</div>
 </div></div>
   </div>
 </div></div>
