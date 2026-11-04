@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=794px">
+<title>Kabul Restaurant — Speisekarte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ── BACKGROUNDS ── */
+  --paper:#143520;
+  /* ── TEXT COLORS ── */
+  --cream:#F2ECD8;--cream-dim:rgba(242,236,216,0.74);--dari:#D4A843;
+  /* ── GOLD SYSTEM (5 levels) ── */
+  --gold:#C19008;--gold-bright:#DDB840;
+  --gold-border:rgba(193,144,8,0.72);--gold-mid:rgba(193,144,8,0.50);
+  --gold-dim:rgba(193,144,8,0.30);--gold-ghost:rgba(193,144,8,0.10);
+  /* ── ACCENT PALETTE ── */
+  --green-deep:#16552C;--green:#1C6B3A;--garnet:#9A3B2E;--lapis:#1C4B8F;
+  /* ── LEGACY ALIASES (backward compat) ── */
+  --gold-cap:#C19008;--gold-antique:#D4A843;--ink:#F2ECD8;--hair:rgba(193,144,8,0.55);
+  /* ── FONTS ── */
+  --f-hero:'Playfair Display',Georgia,serif;
+  --f-serif:'Cormorant Garamond',Georgia,serif;
+  --f-caps:'Cinzel',Georgia,serif;
+  --f-body:'Jost','Helvetica Neue',Arial,sans-serif;
+  --f-nastaliq:'Noto Nastaliq Urdu','Amiri',serif;
+  --f-naskh:'Amiri',serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;}
+html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
+/* A4 210x297 TRIM + 3mm Beschnitt/Bleed → media 216x303mm (druckfertig) */
+@page{size:216mm 303mm;margin:0;}
+.page-outer{width:216mm;height:303mm;position:relative;overflow:hidden;background-color:var(--paper);break-after:page;page-break-after:always;}
+.page-outer.page-carpet::before{opacity:1;}
+.page-outer:last-child{break-after:avoid;page-break-after:avoid;}
+.page{width:210mm;height:297mm;position:absolute;top:3mm;left:3mm;overflow:hidden;background:transparent;}
+/* Afghan carpet border + green wash — inline SVG (vector, not rasterised) */
+.pagedeco{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+.gul{position:absolute;z-index:160;pointer-events:none;}
+.gul.tl{top:3.4mm;left:3.4mm;}.gul.tr{top:3.4mm;right:3.4mm;}.gul.bl{bottom:3.4mm;left:3.4mm;}.gul.br{bottom:3.4mm;right:3.4mm;}
+.content{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;justify-content:flex-start;gap:14px;padding:168px 18px 20px;overflow:hidden;}
+.content.dense{gap:7px;padding:165px 18px 20px;}
+/* ── PAGE HEADER — Goldrahmen-Block ── */
+.header-area{position:absolute;top:0;left:0;right:0;z-index:6;}
+.header-band{
+  background:rgba(8,26,15,0.97);
+  border-top:2.5px solid #C19008;
+  border-bottom:2px solid #C19008;
+  padding:16px 52px 14px;
+  text-align:center;
+}
+.header-rule{display:flex;align-items:center;gap:0;justify-content:center;margin-bottom:5px;}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:1px;background:rgba(193,144,8,0.6);}
+.header-rule-diamond{width:8px;height:8px;background:#C19008;transform:rotate(45deg);flex-shrink:0;margin:0 12px;}
+.restaurant-label{font-family:var(--f-caps);font-size:10px;font-weight:600;letter-spacing:8px;color:#C9A030;text-transform:uppercase;margin-bottom:6px;}
+.header-bottom-rule{display:flex;align-items:center;gap:0;justify-content:center;margin-top:5px;}
+.header-bottom-rule::before,.header-bottom-rule::after{content:'';flex:1;height:1px;background:rgba(193,144,8,0.6);}
+.header-bottom-rule-diamond{width:8px;height:8px;background:#C19008;transform:rotate(45deg);flex-shrink:0;margin:0 12px;}
+.category-name{font-family:var(--f-caps);font-size:42px;font-weight:700;color:#ffffff;letter-spacing:5px;text-transform:uppercase;line-height:1.08;}
+.category-dari{font-family:var(--f-naskh);font-size:18px;color:#D4A843;margin-top:4px;direction:rtl;}
+.header-divider-wrap{display:none;}
+.divider{display:flex;align-items:center;gap:9px;justify-content:center;margin-top:8px;}
+.dl{height:1px;width:90px;}
+.divider .dl{background:rgba(193,144,8,0.6);}
+/* ── DISH ITEMS ── */
+.item{display:flex;align-items:center;gap:16px;flex:0 0 auto;padding:6px 0 8px;border-bottom:1px solid rgba(193,144,8,0.18);}
+.item.rev{flex-direction:row-reverse;}
+.bubble{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:10px 18px 10px 22px;background:transparent;border-left:4px solid rgba(193,144,8,0.55);}
+.item.rev .bubble{border-left:none;border-right:4px solid rgba(193,144,8,0.55);padding:10px 22px 10px 18px;}
+.dish-head{display:flex;align-items:center;gap:10px;width:100%;}
+.dish-nr-name{display:flex;flex-direction:column;flex:1;min-width:0;}
+.dish-nr-tag{font-family:var(--f-caps);font-size:24px;font-weight:700;color:var(--gold);letter-spacing:3px;line-height:1;margin-bottom:5px;display:block;width:fit-content;padding-bottom:5px;border-bottom:2px solid rgba(193,144,8,0.55);}
+.dish-name{flex:1;min-width:0;font-family:var(--f-serif);font-size:28px;font-weight:600;color:var(--cream);line-height:1.1;letter-spacing:0.3px;}
+.dish-name.name-compact{font-size:22px;}
+.dish-dari{font-family:var(--f-naskh);font-size:16px;color:var(--dari);margin-top:2px;padding-left:0;direction:rtl;text-align:left;line-height:1.3;}
+.dish-rule{height:1px;background:linear-gradient(to right,var(--gold-mid),var(--gold-border),var(--gold-mid),var(--gold-dim),transparent);margin:6px 0 5px;}
+.dish-desc{font-family:var(--f-body);font-size:16px;font-weight:400;color:rgba(242,236,216,0.82);line-height:1.55;letter-spacing:0.2px;}
+.dish-price{font-family:var(--f-caps);font-size:17px;font-weight:700;color:var(--gold-bright);white-space:nowrap;flex-shrink:0;align-self:center;display:inline-block;min-width:92px;text-align:center;background:linear-gradient(150deg,rgba(6,16,10,0.98),rgba(18,38,22,0.96));border:1.5px solid var(--gold-border);border-radius:5px;padding:6px 16px;letter-spacing:0.8px;box-shadow:0 0 12px rgba(193,144,8,0.18),inset 0 1px 0 rgba(193,144,8,0.12);}
+/* dense (4 items) */
+.dense .dish-name{font-size:24px;}
+.dense .dish-dari{font-size:13px;padding-left:0;}
+.dense .dish-nr-tag{font-size:21px;letter-spacing:2.5px;}
+.dense .dish-rule{margin:4px 0 3px;}
+.dense .dish-desc{font-size:14px;line-height:1.45;}
+.dense .bubble{padding:7px 14px 7px 18px;}
+.dense .item.rev .bubble{padding:7px 18px 7px 14px;}
+.dense .dish-price{font-size:14px;padding:5px 12px;min-width:80px;}
+/* dish photo — einheitliche Größe auf allen Seiten */
+.photo-wrap{flex-shrink:0;position:relative;width:320px;height:210px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent;}
+.dense .photo-wrap{width:345px;height:225px;}
+.sparse .photo-wrap{width:360px;height:235px;}
+.content.sparse{justify-content:center;gap:36px;}
+/* duo = 2 items on a page */
+.duo .photo-wrap{width:320px;height:210px;}
+.content.duo{justify-content:center;gap:52px;}
+.duo .dish-name{font-size:34px;}
+.duo .dish-dari{font-size:18px;margin-top:3px;padding-left:0;}
+.duo .dish-desc{font-size:18px;line-height:1.6;}
+.duo .dish-price{font-size:18px;padding:8px 18px;min-width:100px;}
+.duo .dish-nr-tag{font-size:28px;letter-spacing:3px;}
+.duo .bubble{padding:14px 20px 14px 26px;}
+.duo .item.rev .bubble{padding:14px 26px 14px 20px;}
+.duo .dish-rule{margin:9px 0 8px;}
+/* sparse (3 items) upgrades */
+.sparse .dish-name{font-size:32px;}
+.sparse .dish-name.name-compact{font-size:24px;}
+.sparse .dish-dari{font-size:17px;}
+.sparse .dish-desc{font-size:17px;}
+.sparse .dish-price{font-size:17px;padding:7px 18px;min-width:95px;}
+.duo .dish-name.name-compact{font-size:26px;}
+.photo-img{width:100%;height:100%;object-fit:cover;display:block;}
+.foot-note{position:absolute;bottom:14px;left:18px;right:18px;text-align:center;border-top:1px solid rgba(193,144,8,0.3);padding-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:7;}
+.foot-note .nk{font-family:var(--f-naskh);font-size:13px;direction:rtl;color:rgba(193,144,8,0.75);}
+.foot-note .sep{font-family:var(--f-caps);font-size:9px;letter-spacing:3px;color:rgba(242,236,216,0.58);text-transform:uppercase;}
+.foot-note .de{font-family:var(--f-body);font-size:11px;font-style:italic;color:rgba(242,236,216,0.65);}
+/* cover */
+.page-cover .content{justify-content:center;align-items:center;text-align:center;padding:0 46px;}
+.cover-shamsa{display:block;margin-bottom:6px;}
+.cover-logo{width:255px;height:auto;display:block;margin:2px 0 12px;}
+.cover-dari{font-family:var(--f-nastaliq);font-size:38px;font-weight:700;color:var(--cream);line-height:1.6;direction:rtl;}
+.cover-name{font-family:var(--f-hero);font-size:92px;font-weight:700;font-style:italic;color:var(--cream);letter-spacing:3px;line-height:1;}
+.cover-sub{font-family:var(--f-caps);font-size:18px;font-weight:600;letter-spacing:4px;color:var(--gold-antique);text-transform:uppercase;margin-top:15px;}
+.cover-city{font-family:var(--f-caps);font-size:13px;font-weight:600;letter-spacing:9px;color:var(--gold);text-transform:uppercase;margin-top:7px;}
+.cover-speisekarte{font-family:var(--f-caps);font-size:29px;font-weight:700;letter-spacing:9px;color:var(--cream);margin-top:6px;}
+.cover-welcome{font-family:var(--f-naskh);font-size:18px;color:var(--gold-antique);margin-top:12px;direction:rtl;}
+.cover-halal{height:78px;width:auto;margin-top:22px;}
+.cover-halal-cap{font-family:var(--f-naskh);font-size:14px;color:var(--gold-antique);margin-top:4px;direction:rtl;}
+/* ── minimal eucalyptus pages (cover + last) ── */
+.page-min{background:#FDFDFB;}
+.min-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.min-wrap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 72px;}
+.min-logo{width:150px;height:auto;margin-bottom:16px;}
+.min-dari{font-family:var(--f-nastaliq);font-size:34px;font-weight:700;color:var(--cream);line-height:1.6;direction:rtl;}
+.min-name{font-family:var(--f-hero);font-size:86px;font-weight:700;font-style:italic;color:var(--cream);letter-spacing:2px;line-height:1;}
+.min-sub{font-family:var(--f-caps);font-size:17px;font-weight:600;letter-spacing:4px;color:var(--gold-antique);text-transform:uppercase;margin-top:14px;}
+.min-city{font-family:var(--f-caps);font-size:12px;font-weight:600;letter-spacing:8px;color:var(--gold);text-transform:uppercase;margin-top:6px;}
+.min-div{display:flex;align-items:center;gap:10px;justify-content:center;margin:26px 0 14px;}
+.min-div span{display:block;height:1px;width:70px;background:rgba(120,140,120,0.5);}
+.min-div b{display:block;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.min-speise{font-family:var(--f-caps);font-size:26px;font-weight:700;letter-spacing:8px;color:var(--cream);}
+.info-title{font-family:var(--f-serif);font-size:46px;font-weight:600;font-style:italic;color:var(--cream);margin-bottom:4px;}
+.info-dari{font-family:var(--f-naskh);font-size:17px;color:var(--gold-antique);margin-bottom:32px;direction:rtl;}
+.info-row{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0;}
+.info-icon{flex-shrink:0;width:22px;height:22px;color:var(--gold);}
+.info-icon svg{width:22px;height:22px;display:block;}
+.info-text{font-family:var(--f-body);font-size:17px;font-weight:400;color:var(--cream);line-height:1.4;text-align:left;}
+.info-text b{font-weight:500;color:var(--cream);}
+.info-close{margin-top:14px;font-family:var(--f-serif);font-style:italic;font-size:22px;color:var(--gold-antique);}
+.info-close .nk{font-family:var(--f-naskh);font-style:normal;}
+.qr-wrap{margin-top:12px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.qr-box{background:#ffffff;padding:10px;border-radius:8px;border:2px solid rgba(193,144,8,0.7);box-shadow:0 0 0 4px rgba(193,144,8,0.15);display:flex;flex-direction:column;align-items:center;gap:6px;}
+.qr{width:115px;height:115px;display:block;}
+.qr-label{font-family:var(--f-caps);font-size:9px;font-weight:700;letter-spacing:2px;color:#1C3A28;text-transform:uppercase;text-align:center;}
+.qr-fallback{width:140px;height:140px;border:1px solid var(--gold);background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-caps);font-size:13px;color:#1C3A28;}
+.qr-cap{font-family:var(--f-caps);font-size:10px;letter-spacing:3px;color:rgba(242,236,216,0.8);text-transform:uppercase;}
+.socials{display:flex;gap:20px;justify-content:center;margin-top:28px;}
+.social-icon{width:26px;height:26px;color:var(--gold);}
+.social-icon svg{width:26px;height:26px;display:block;}
+.social-handle{font-family:var(--f-body);font-size:14px;color:rgba(242,236,216,0.7);margin-top:9px;letter-spacing:0.5px;}
+.info-hours{font-family:var(--f-body);font-size:15px;color:var(--cream);line-height:1.55;margin-top:2px;}
+.hours{display:inline-grid;grid-template-columns:auto auto;column-gap:28px;row-gap:5px;margin:6px 0 2px;font-family:var(--f-body);font-size:15.5px;color:var(--cream);}
+.hours span:nth-child(odd){text-align:left;}
+.hours span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;}
+.dr-section{font-family:var(--f-caps);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:5px;margin-bottom:8px;margin-top:10px;display:flex;align-items:center;gap:10px;}
+.dr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.dr-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.dr-card{display:flex;flex-direction:column;background:rgba(8,20,10,0.6);border:1px solid rgba(193,144,8,0.28);overflow:hidden;}
+.dr-img-wrap{height:105px;overflow:hidden;background:rgba(5,14,7,0.75);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.dr-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.6));display:block;}
+.dr-emoji{font-size:38px;line-height:1;}
+.dr-body{padding:7px 8px 8px;flex:1;display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid rgba(193,144,8,0.18);}
+.dr-name{font-family:var(--f-serif);font-size:15px;font-weight:600;color:var(--cream);line-height:1.2;}
+.dr-sub{font-family:var(--f-body);font-size:10px;color:rgba(242,236,216,0.45);font-style:italic;margin-top:1px;}
+.dr-dari{font-family:var(--f-naskh);font-size:13px;color:var(--dari);direction:rtl;margin-top:1px;}
+.dr-price{font-family:var(--f-caps);font-size:15px;font-weight:800;color:var(--gold);margin-top:5px;}
+/* ── ELEGANT COVER LAYOUT ── */
+.cov-wrap{position:absolute;inset:14mm;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:8px 44px 14px;}
+.cov-hband{width:100%;display:flex;flex-direction:column;align-items:center;}
+.cov-hband-rule{display:flex;align-items:center;gap:8px;width:100%;}
+.cov-hband-rule span{flex:1;height:1px;background:rgba(193,144,8,0.6);}
+.cov-hband-rule b{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;display:inline-block;}
+.cov-hband-text{font-family:var(--f-caps);font-size:10px;font-weight:600;letter-spacing:7px;color:var(--gold);text-transform:uppercase;margin:9px 0;}
+.cov-center{display:flex;flex-direction:column;align-items:center;gap:0;}
+.cov-logo-hero{width:265px;height:auto;display:block;margin-bottom:14px;}
+.cov-seal{display:block;margin-bottom:10px;opacity:0.9;}
+.cov-dari{font-family:var(--f-nastaliq);font-size:40px;font-weight:700;color:var(--cream);line-height:1.5;direction:rtl;margin-top:2px;}
+.cov-name{font-family:var(--f-hero);font-size:114px;font-weight:700;font-style:italic;color:var(--cream);letter-spacing:2px;line-height:0.88;}
+.cov-divider{display:flex;align-items:center;gap:10px;justify-content:center;margin:14px 0 12px;}
+.cov-divider span{width:90px;height:1px;background:rgba(193,144,8,0.65);}
+.cov-divider b{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);display:inline-block;}
+.cov-sub{font-family:var(--f-caps);font-size:13.5px;font-weight:600;letter-spacing:5px;color:var(--gold-antique);text-transform:uppercase;}
+.cov-fband{width:100%;display:flex;flex-direction:column;align-items:center;gap:0;}
+.cov-speise-box{width:100%;border-top:1.5px solid rgba(193,144,8,0.72);border-bottom:1.5px solid rgba(193,144,8,0.72);padding:13px 0;margin-bottom:10px;}
+.cov-speise{font-family:var(--f-caps);font-size:31px;font-weight:700;letter-spacing:14px;color:var(--cream);}
+.cov-welcome-text{font-family:var(--f-naskh);font-size:14px;color:var(--gold-antique);direction:rtl;margin-bottom:5px;}
+.cov-fband-rule{display:flex;align-items:center;gap:8px;width:100%;margin-top:4px;}
+.cov-fband-rule span{flex:1;height:1px;background:rgba(193,144,8,0.35);}
+.cov-fband-rule b{width:5px;height:5px;background:rgba(193,144,8,0.55);transform:rotate(45deg);flex-shrink:0;display:inline-block;}
+/* ── CATEGORY HEADER — elegant rework ── */
+.cat-header{position:absolute;top:0;left:0;right:0;z-index:8;text-align:center;
+  background:linear-gradient(to bottom,rgba(8,22,13,1.0) 86%,rgba(8,22,13,0.6) 94%,rgba(8,22,13,0) 100%);}
+.cat-topband{height:5px;background:linear-gradient(to right,transparent,#C19008 5%,#C19008 95%,transparent);}
+.cat-inner{padding:12px 36px 0;}
+.cat-eyebrow{font-family:var(--f-caps);font-size:9px;font-weight:600;letter-spacing:7px;color:rgba(193,144,8,0.55);text-transform:uppercase;display:block;margin-bottom:5px;}
+.cat-title{font-family:var(--f-serif);font-size:58px;font-weight:400;color:var(--cream);line-height:1;letter-spacing:0.5px;white-space:nowrap;display:block;}
+.cat-orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px auto 6px;width:200px;}
+.cat-orn span{flex:1;height:1px;background:rgba(193,144,8,0.5);display:block;}
+.cat-orn-gem{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);display:inline-block;}
+.cat-dari{font-family:var(--f-naskh);font-size:21px;color:var(--dari);direction:rtl;display:block;line-height:1.4;}
+.cat-botline{height:2px;background:linear-gradient(to right,transparent 2%,rgba(193,144,8,0.65) 10%,rgba(193,144,8,0.65) 90%,transparent 98%);margin:10px 14px 0;}
+</style>
+</head><body>
+<div class="page-outer page-carpet">
+  <img src="images/_mk_cache/border-frame.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:20;pointer-events:none;opacity:0.95;">
+  <div class="page page-cover">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cov-wrap">
+    <div class="cov-center">
+      <img class="cov-logo-hero" src="images/_mk_cache/kabul-logo.png" alt="Kabul Restaurant">
+<div class="cov-dari" dir="rtl">کابل</div>
+      <div class="cov-name">Kabul</div>
+      <div class="cov-divider"><span></span><b></b><span></span></div>
+      <div class="cov-sub">Afghanische Spezialitäten</div>
+      <div class="cov-speise-box" style="margin-top:22px;"><div class="cov-speise">SPEISEKARTE</div></div>
+    </div>
+    <div class="cov-fband">
+      <div class="cov-welcome-text" dir="rtl">خوش آمدید &nbsp;·&nbsp; ښه راغلاست</div>
+      <div class="cov-fband-rule"><span></span><b></b><span></span></div>
+      <div class="qr-wrap" style="margin-top:18px;">
+        <div class="qr-box">
+          <div class="qr"><img src="data:image/png;base64,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" class="qr" alt="QR Code"></div>
+          <div class="qr-label">Online Speisekarte</div>
+        </div>
+        <div class="qr-cap" style="margin-top:6px;">Auf Google finden</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Vorspeisen</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">پیش غذا</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content sparse">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">26</span>
+              <div class="dish-name name-compact">Afghani Burger</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">برگر افغانی</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Saftige Rindswurst auf Afghani-Brot mit Pommes, Ei & Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_27.png" alt="Afghani Burger" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">27</span>
+              <div class="dish-name">Samosa</div>
+            </div>
+            <span class="dish-price">ab 2,50 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">سمبوسه گیاهی</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Knusprig frittierte Teigtaschen gefüllt mit Gemüse, Kartoffeln & Sauce · 1 Stk.: 2,50 € / 2 Stk.: 4,99 €</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_28.png" alt="Samosa" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">28</span>
+              <div class="dish-name name-compact">Bolani Kachalo</div>
+            </div>
+            <span class="dish-price">2,49 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">بولانی</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Gebackenes Fladenbrot gefüllt mit Kartoffeln, Koriander & Gewürzen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_29.png" alt="Bolani Kachalo" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Traditionelle Gerichte</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">غذاهای سنتی</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content sparse">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">01</span>
+              <div class="dish-name">Mahicha Palau</div>
+            </div>
+            <span class="dish-price">16,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">ماهیچه پلو</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Duftender Basmati mit zart geschmorter Lammhaxe, Möhren & Rosinen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_01.png" alt="Mahicha Palau" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">02</span>
+              <div class="dish-name">Mantu</div>
+            </div>
+            <span class="dish-price">12,90 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">منتو</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Handgemachte Teigtaschen mit Hackfleisch, überbacken mit Joghurt & Soße</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_08.png" alt="Mantu" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">15</span>
+              <div class="dish-name">Ashak</div>
+            </div>
+            <span class="dish-price">12,90 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">آشک</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zarte Nudeltaschen gefüllt mit Lauch, serviert mit Joghurt & Soße</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_31.png" alt="Ashak" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Traditionelle Gerichte</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">غذاهای سنتی</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content sparse">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">03</span>
+              <div class="dish-name">Shola</div>
+            </div>
+            <span class="dish-price">10,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">شوله</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Cremiger Reis mit Linsen, Hackfleisch, Tomatensauce & Joghurt</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_04.png" alt="Shola" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">04</span>
+              <div class="dish-name">Borani Banjan</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">بورانی بانجان</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Gebratene Auberginen in Tomatensauce, verfeinert mit cremigem Joghurt</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_09.png" alt="Borani Banjan" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">05</span>
+              <div class="dish-name">Korma Morgh</div>
+            </div>
+            <span class="dish-price">11,90 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">قورمه مرغ</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Hähnchen geschmort in würziger Tomatensauce mit Koriander</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_07.png" alt="Korma Morgh" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Traditionelle Gerichte</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">غذاهای سنتی</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content sparse">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">06</span>
+              <div class="dish-name">Molong Palau</div>
+            </div>
+            <span class="dish-price">32 / 45 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">مونگ پلو</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Duftender Basmati mit Mungbohnen, Möhren & Rosinen · 2 Pers.: 32 € / 3 Pers.: 45 €</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_18.png" alt="Molong Palau" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">22</span>
+              <div class="dish-name">Kabuli Palau</div>
+            </div>
+            <span class="dish-price">8,50 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کابلی پلو</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Duftender Basmati mit zartem Lamm, karamellisierten Möhren & Rosinen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_23.png" alt="Kabuli Palau" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">23</span>
+              <div class="dish-name">Pacha Suppe</div>
+            </div>
+            <span class="dish-price">10,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">پاچه</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Traditionelle Suppe mit Lammhaxe & Innereien, serviert mit Naan</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_24.png" alt="Pacha Suppe" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Grill & Fleisch</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">کباب و گوشت</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content dense">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">07</span>
+              <div class="dish-name">Mixgrill</div>
+            </div>
+            <span class="dish-price">24,50 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کباب مخلوط</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Auswahl aus Kobida, Chicken Tikka & Lammkotelett, serviert mit Basmati & Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_21.png" alt="Mixgrill" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">08</span>
+              <div class="dish-name">Chapli Kabab</div>
+            </div>
+            <span class="dish-price">9,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">چپلی کباب</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Würzig gebratene Rindfleisch-Patties mit Tomaten, Zwiebeln & Hausgewürzen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_17.png" alt="Chapli Kabab" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">09</span>
+              <div class="dish-name">Kobida Kabab</div>
+            </div>
+            <span class="dish-price">16,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کوبیده کباب</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Hausmariniertes Rind & Lamm am Spieß, serviert mit Basmati & Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_16.png" alt="Kobida Kabab" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">10</span>
+              <div class="dish-name name-compact">Lamm Tikka Kabab</div>
+            </div>
+            <span class="dish-price">17,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">تکه بره</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zart marinierte Lammstücke vom Spieß, serviert mit Basmati & Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_13.png" alt="Lamm Tikka Kabab" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Grill & Fleisch</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">کباب و گوشت</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content dense">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">11</span>
+              <div class="dish-name">Korma Kofta</div>
+            </div>
+            <span class="dish-price">11,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">قورمه کوفته</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Saftige Fleischbällchen geschmort in würziger Tomatensauce mit Basmati</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_02.png" alt="Korma Kofta" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">12</span>
+              <div class="dish-name">Dopiaza</div>
+            </div>
+            <span class="dish-price">13,90 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">دوپیازه</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Kalbfleisch mit Paprika, Tomaten & frischem Koriander</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_10.png" alt="Dopiaza" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">19</span>
+              <div class="dish-name">Chicken Kabab</div>
+            </div>
+            <span class="dish-price">15,50 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کباب مرغ</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zart mariniertes Hähnchen vom Spieß, serviert mit Basmati & Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_22.png" alt="Chicken Kabab" style="transform:scaleY(-1) scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">20</span>
+              <div class="dish-name">Lammkotelett</div>
+            </div>
+            <span class="dish-price">17,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">دنده بره</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Saftige gegrillte Lammkoteletts, serviert mit Basmati, Salat & Zitrone</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_19.png" alt="Lammkotelett" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Grill & Fleisch</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">کباب و گوشت</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content dense">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">24</span>
+              <div class="dish-name name-compact">Hähnchen Karahi</div>
+            </div>
+            <span class="dish-price">13,50 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کراهی مرغ</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Hähnchen mit frischen Tomaten, Paprika, Ingwer & Knoblauch</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_26.png" alt="Hähnchen Karahi" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">25</span>
+              <div class="dish-name">Lamm Karahi</div>
+            </div>
+            <span class="dish-price">17,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کراهی گوسفند</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Lammfleisch mit Tomaten, Paprika, Ingwer & Knoblauch</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_25.png" alt="Lamm Karahi" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">33</span>
+              <div class="dish-name">Kalb Karahi</div>
+            </div>
+            <span class="dish-price">15,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">کراهی گوساله</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Kalbfleisch mit Tomaten, Paprika, Ingwer & Knoblauch</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_kalb_karahi.png" alt="Kalb Karahi" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">21</span>
+              <div class="dish-name">Fry Fish</div>
+            </div>
+            <span class="dish-price">14,90 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">ماهی سرخ شده</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Frittierter Fisch · Pommes oder Brot · Salat</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_fish_fry.png" alt="Fry Fish" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Vegetarisch & Suppen</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">سبزیجات و سوپ</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content dense">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">13</span>
+              <div class="dish-name">Spinatcurry</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">سبزی</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Cremiger Spinat mit Kichererbsen, Zwiebeln & Hausgewürzen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_03.png" alt="Spinatcurry" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">14</span>
+              <div class="dish-name">Blumenkohl</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">گلپی</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zarter Blumenkohl geschmort in würziger Tomatensauce mit Zwiebeln</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_05.png" alt="Blumenkohl" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">16</span>
+              <div class="dish-name">Loobia</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">لوبیا</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Rote Bohnen mit Kartoffeln, Tomatensauce & frischem Koriander</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_11.png" alt="Loobia" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">17</span>
+              <div class="dish-name">Bamia</div>
+            </div>
+            <span class="dish-price">10,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">بامیه</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Zartes Okra geschmort in würziger Tomatensauce mit Koriander</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_12.png" alt="Bamia" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Vegetarisch & Suppen</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">سبزیجات و سوپ</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  
+  <div class="content sparse">
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">18</span>
+              <div class="dish-name">Nakhod</div>
+            </div>
+            <span class="dish-price">8,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">نخود</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Kichererbsen in würziger Tomatensauce mit Koriander & Gewürzen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_15.png" alt="Nakhod" style="transform:scale(1)"></div>
+      </div>
+      <div class="item rev">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">30</span>
+              <div class="dish-name name-compact">Hähnchen Suppe</div>
+            </div>
+            <span class="dish-price">10,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">سوپ مرغ</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Klare Hähnchenbrühe mit Ei, Nudeln, Koriander & Gewürzen</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_20.png" alt="Hähnchen Suppe" style="transform:scale(1)"></div>
+      </div>
+      <div class="item">
+        <div class="bubble">
+          <div class="dish-head">
+            <div class="dish-nr-name">
+              <span class="dish-nr-tag">29</span>
+              <div class="dish-name name-compact">Vegetarischer Teller</div>
+            </div>
+            <span class="dish-price">10,00 €</span>
+          </div>
+          <div class="dish-dari" dir="rtl">بشقاب سبزیجات</div>
+          <div class="dish-rule"></div>
+          <p class="dish-desc">Spinat, Blumenkohl & Kichererbsen mit cremigem Joghurt & Naan</p>
+        </div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_30.png" alt="Vegetarischer Teller" style="transform:scale(1)"></div>
+      </div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet"><div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="cat-header">
+    <div class="cat-topband"></div>
+    <div class="cat-inner">
+      <span class="cat-eyebrow">Speisekarte</span>
+      <span class="cat-title">Getränke &amp; Süßigkeiten</span>
+      <div class="cat-orn"><span></span><div class="cat-orn-gem"></div><span></span></div>
+      <span class="cat-dari" dir="rtl">نوشیدنی‌ها و شیرینی‌ها</span>
+    </div>
+    <div class="cat-botline"></div>
+  </div>
+  <div style="position:absolute;inset:0;top:162px;bottom:22px;left:26px;right:26px;z-index:5;">
+<div class="dr-section">Getränke<span style="font-family:var(--f-naskh);font-size:15px;color:var(--dari);">نوشیدنی</span></div>
+<div class="dr-grid"><div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_37.png"></div><div class="dr-body"><div><div class="dr-name">Cola</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_38.png"></div><div class="dr-body"><div><div class="dr-name">Cola Zero</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_36.png"></div><div class="dr-body"><div><div class="dr-name">Mezzo Mix</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍏</div></div><div class="dr-body"><div><div class="dr-name">Apfelschorle</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_35.png"></div><div class="dr-body"><div><div class="dr-name">Wasser still</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><img class="dr-img" src="images/_mk_cache/drink_35.png"></div><div class="dr-body"><div><div class="dr-name">Wasser sprudel</div></div><div class="dr-price">2,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🧋</div></div><div class="dr-body"><div><div class="dr-name">Dough</div><div class="dr-dari" dir="rtl">دوغ</div><div class="dr-sub">Joghurt-Drink</div></div><div class="dr-price">3,00 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍵</div></div><div class="dr-body"><div><div class="dr-name">Tee</div><div class="dr-dari" dir="rtl">چای</div></div><div class="dr-price">1,50 €</div></div></div>
+</div>
+<div style="margin-top:12px;">
+<div class="dr-section">Süßigkeiten<span style="font-family:var(--f-naskh);font-size:15px;color:var(--dari);">شیرینی</span></div>
+<div class="dr-grid-3"><div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍯</div></div><div class="dr-body"><div><div class="dr-name">Jelabi</div><div class="dr-dari" dir="rtl">جلبی</div><div class="dr-sub">pro Stück</div></div><div class="dr-price">1,50 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍮</div></div><div class="dr-body"><div><div class="dr-name">Afghanischer Pudding</div><div class="dr-dari" dir="rtl">فرنی</div></div><div class="dr-price">3,00 €</div></div></div>
+<div class="dr-card"><div class="dr-img-wrap"><div class="dr-emoji">🍨</div></div><div class="dr-body"><div><div class="dr-name">Afghanisches Eis-Creme</div><div class="dr-dari" dir="rtl">آیس کریم</div></div><div class="dr-price">4,00 €</div></div></div>
+</div></div>
+  </div>
+</div></div>
+<div class="page-outer page-carpet">
+  <img src="images/_mk_cache/border-frame.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:20;pointer-events:none;opacity:0.95;">
+  <div class="page">
+  <img src="images/_mk_cache/card-bg-pattern.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;opacity:0.85;">
+  <div class="content" style="justify-content:center;align-items:center;text-align:center;">
+    <img class="cover-logo" src="images/_mk_cache/kabul-logo.png" alt="Kabul Restaurant" style="width:150px;margin-bottom:4px;">
+    <div class="info-title">Besuchen Sie uns</div>
+    <div class="info-dari" dir="rtl" style="margin-bottom:16px;">به دیدن ما بیایید</div>
+    <div class="info-row"><span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.6"/></svg></span><span class="info-text"><b>Moselstraße 18</b> · 60329 Frankfurt am Main</span></div>
+    <div class="info-row"><span class="info-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.3 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg></span><span class="info-text">069 27279435</span></div>
+    <div class="info-row"><span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg></span><span class="info-text"><b>Öffnungszeiten</b></span></div>
+    <div class="hours"><span>Montag – Donnerstag</span><span>11:00 – 22:00</span><span>Freitag – Samstag</span><span>11:00 – 23:00</span><span>Sonntag</span><span>12:00 – 21:00</span></div>
+    <div class="socials" style="margin-top:14px;"><span class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></span><span class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h2.6V6H14c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.6c0-.4.3-.6.6-.6z"/></svg></span><span class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 3c.3 2 1.6 3.6 3.6 4v2.4c-1.3 0-2.6-.4-3.6-1.1v5.9c0 3-2.4 5.4-5.4 5.4s-5.4-2.4-5.4-5.4 2.4-5.4 5.4-5.4c.3 0 .6 0 .9.1v2.5c-.3-.1-.6-.2-.9-.2-1.7 0-3 1.4-3 3s1.3 3 3 3 3-1.3 3-3V3h2z"/></svg></span></div>
+    <div class="social-handle">@kabulrestaurant</div>
+    <div class="divider"><span class="dl"></span><svg viewBox="0 0 130 24" width="130" height="22" aria-hidden="true"><g fill="none" stroke="#C19008" stroke-width="1.5"><path d="M6,12 h34"/><path d="M90,12 h34"/><path d="M48,12 l8,-8 8,8 -8,8 z"/><path d="M74,12 l8,-8 8,8 -8,8 z"/></g><path d="M61,12 l4,-4 4,4 -4,4 z" fill="#1C6B3A"/></svg><span class="dl"></span></div>
+    <div class="qr-wrap" style="margin-top:10px;margin-bottom:10px;">
+      <div class="qr-box">
+        <div class="qr"><img src="data:image/png;base64,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" class="qr" alt="QR Code"></div>
+        <div class="qr-label">Online Speisekarte</div>
+      </div>
+    </div>
+    <div class="info-close"><span class="nk" dir="rtl">نوش جان</span> · Guten Appetit</div>
+  </div>
+</div></div>
+</body></html>
