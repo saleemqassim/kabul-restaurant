@@ -161,8 +161,8 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
 .hours span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;}
 .dr-section{font-family:var(--f-caps);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:5px;margin-bottom:10px;margin-top:12px;display:flex;align-items:center;gap:10px;}
 .dr-cat-row{display:flex;gap:24px;align-items:stretch;}
-.dr-cat-photo{width:70px;flex-shrink:0;border:1px solid rgba(193,144,8,0.35);overflow:hidden;background:rgba(5,14,7,0.75);}
-.dr-cat-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.dr-cat-photos{display:flex;flex-direction:column;gap:4px;width:72px;flex-shrink:0;align-self:center;}
+.dr-cat-photos img{width:100%;aspect-ratio:1;object-fit:contain;background:rgba(5,14,7,0.75);border:1px solid rgba(193,144,8,0.25);}
 .dr-list{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;}
 .dr-list-item{display:flex;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(193,144,8,0.14);gap:6px;}
 .dr-list-item:last-child{border-bottom:none;}
@@ -865,7 +865,12 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
   <div style="position:absolute;inset:0;top:162px;bottom:22px;left:26px;right:26px;z-index:5;">
 <div class="dr-section">Getränke<span style="font-family:var(--f-naskh);font-size:15px;color:var(--dari);">نوشیدنی</span></div>
 <div class="dr-cat-row">
-  <div class="dr-cat-photo"><img src="images/_mk_cache/drink_37.png"></div>
+  <div class="dr-cat-photos">
+    <img src="images/_mk_cache/drink_35.png">
+    <img src="images/_mk_cache/drink_36.png">
+    <img src="images/_mk_cache/drink_37.png">
+    <img src="images/_mk_cache/drink_38.png">
+  </div>
   <div class="dr-list"><div class="dr-list-item"><div class="li-left"><div class="li-name">Cola</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
 <div class="dr-list-item"><div class="li-left"><div class="li-name">Cola Zero</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
 <div class="dr-list-item"><div class="li-left"><div class="li-name">Mezzo Mix</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
