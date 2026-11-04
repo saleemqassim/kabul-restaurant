@@ -73,7 +73,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
 .dish-dari{font-family:var(--f-naskh);font-size:16px;color:var(--dari);margin-top:2px;padding-left:0;direction:rtl;text-align:left;line-height:1.3;}
 .dish-rule{height:1px;background:linear-gradient(to right,var(--gold-mid),var(--gold-border),var(--gold-mid),var(--gold-dim),transparent);margin:6px 0 5px;}
 .dish-desc{font-family:var(--f-body);font-size:16px;font-weight:400;color:rgba(210,185,120,0.82);line-height:1.55;letter-spacing:0.2px;}
-.dish-price{font-family:var(--f-caps);font-size:17px;font-weight:700;color:var(--gold-bright);white-space:nowrap;flex-shrink:0;align-self:center;display:inline-block;min-width:92px;text-align:center;background:linear-gradient(150deg,rgba(6,16,10,0.98),rgba(18,38,22,0.96));border:1.5px solid var(--gold-border);border-radius:5px;padding:6px 16px;letter-spacing:0.8px;box-shadow:0 0 12px rgba(193,144,8,0.18),inset 0 1px 0 rgba(193,144,8,0.12);}
+.dish-price{font-family:var(--f-caps);font-size:17px;font-weight:700;color:var(--gold-bright);flex-shrink:0;align-self:center;display:inline-block;min-width:92px;text-align:center;background:linear-gradient(150deg,rgba(6,16,10,0.98),rgba(18,38,22,0.96));border:1.5px solid var(--gold-border);border-radius:5px;padding:6px 16px;letter-spacing:0.8px;box-shadow:0 0 12px rgba(193,144,8,0.18),inset 0 1px 0 rgba(193,144,8,0.12);}
 /* dense (4 items) */
 .dense .dish-name{font-size:24px;}
 .dense .dish-dari{font-size:13px;padding-left:0;}
@@ -161,8 +161,8 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
 .hours span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;}
 .dr-section{font-family:var(--f-caps);font-size:24px;font-weight:700;color:var(--gold);letter-spacing:4px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:7px;margin-bottom:14px;margin-top:18px;display:flex;align-items:center;gap:10px;}
 .dr-cat-row{display:flex;gap:28px;align-items:stretch;}
-.dr-cat-photos{display:flex;flex-direction:column;gap:5px;width:100px;flex-shrink:0;align-self:flex-start;max-height:280px;}
-.dr-cat-photos img{width:100%;height:64px;object-fit:contain;}
+.dr-cat-photos{display:flex;flex-direction:column;gap:5px;width:100px;flex-shrink:0;align-self:stretch;}
+.dr-cat-photos img{width:100%;flex:1;object-fit:contain;min-height:0;}
 .dr-list{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;}
 .dr-list-item{display:flex;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(193,144,8,0.18);gap:8px;}
 .dr-list-item:last-child{border-bottom:none;}
@@ -236,7 +236,6 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
           <div class="qr"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyCAIAAABnRsZeAAAGhUlEQVR42u3d0XFTMRRF0WPGZVAApVAypVAAfYgO/MGLuPdKa/2HJLazR2/mjHittQLwdb55CQBZAWQFkBUAWQFkBZAVAFkBZAWQFQBZAWQFkBVAVgBkBZAVQFYAZAWQFeA87ydf/P3nj8Nejj+/fpd838+v5Oef6snXnvf+eq06/C04rQAeggBZAWQFQFYAWQFkBUBWAFkBcvnKNi0Xq2m5hty3o+35++5795/8RlWfydv+FpxWAFkBZAWQFQBZAWQFkBUAWQFkBYiVbfot/Kr2nT2XlPvudv38tRPXzP4WnFYAD0GArADICiArgKwAyAogK4CsAKR8ZUv+y1Zy345230+1bzd83kLXaQWQFQBZAWQFkBUAWQFkBZAVAFkBYmXb3MTbW6t2tPsWq1W/L04rgKwAsgLICoCsALICyAqArACyAsTKNpP/L/uev+++he6+u12r7t89b4N73t+C0wogK4CsALICICuArACyAiArgKwAsbJNv7tdM3BH62v775X9LTitALICyAqArACyAsgKgKwAsgLICnCV11rLq5Bz71ituo/2vMXqbbcvO60AsgLICoCsALICyAqArACyAsgKECvb7Nk7Trxz9MmS8rwNbtVttdm2we25Zj5vGey0AsgKICuArADICiArgKwAyAogK8AB3jlu/ZmWC859C90n3/e2O3R7fq6q9rv7Xg2nFcBDECArgKwAyAogK4CsAMgKICtA3GWbaVvYnm7bDU/cZ098rao+dU4rgKwAsgLICoCsALICyAqArACyAuTylW2KtrBVm9SJv+/EG4Vvuwe3ahduZQt4CAJkBUBWAFkBZAVAVgBZAWQF4IN3Lrs19rytZLYtKatejZ43zvb8S+m5OHdaAWQFkBVAVgBkBZAVQFYAZAWQFSCXr2xjR5uvWUN+/pcnrpl77pWrPhs97/3d9w46rQAeggBZAWQFQFYAWQFkBUBWAFkBDvBaa2XafaUZeP/uefez9lwkT9yznvfJcVoBZAWQFUBWAGQFkBVAVgBkBZAVIFa2OeuO1Z7b0Kr7SnveCnzeDbtVn0mnFcBDECArALICyAogKwCyAsgKICsAH7zTcs9adSNp1b2hPffKVe9g1Ra2amNdtaPd9w46rQAeggBZAWQFQFYAWQFkBUBWAFkBcvnKduJNqD23vxPvwd1n4o3CPRe67rIFPAQByAogK4CsALLiJQBkBZAVQFYA/tlrrZV+W8lsWyXu+75V94ZW3ezbc0VtF/5/Ps9OK4CHIEBWAGQFkBVAVgBZAZAVQFaAWNnmpuVoz/tZU7SVrFqO9nx/J94KXPW5cloBPAQBsgLICoCsALICyAqArACyAhzgnZY3gz752qq7P8+7u7dqKZuBC93zXg2nFcBDECArALICyAogKwCyAsgKICtArGxz062i+36qnnvHfWvmqs/GeTcoP3mPer4aTiuArACyAsgKgKwAsgLICoCsALIC5PKVbVouZfetEieuinsuR3tujlO0z+75DjqtAB6CAFkBkBVAVgBZAZAVQFYAWQFiZVviyZ41Le92rVo07nslq26c7bmiPu/T7rQCeAgCZAVAVgBZAWQFQFYAWQFkBSANV7YpuqHzyaKxaoP7ZFd63j2pVYvVnjc3O60AHoIAZAWQFUBWAGQFkBVAVgBkBdjktdbyKmT/VjIDb6s9717YnrcR91xvP/l9nVYAD0GArACyAiArgKwAsgIgK4CsALn8Ltue94Zm24Kz5y2qE+/BrXolq/7lqvtoq34qpxVAVgBZAWQFQFYAWQFkBUBWAFkBcvnKNgP/p/snO8t9m8UnW9ier/PEW3J7ftonLoOdVgAPQYCsALICICuArACyAiArgKwAsbJNv+3gxHtDJy5le96iWrV1nrhmdloBPAQBsgIgK4CsALICICuArACyApCGK9vzTLyBNduW0PvWrudtuyd+NpxWAFkBZAVAVgBZAWQFkBUAWQFkBYiVLam+vbXqXtiJC919S+h9K+rzPhtOK4CsALICyAqArACyAsgKgKwAsgLEyjb9lpS33Va7b99ZteCsunG26tWYuKJ2WgFkBZAVAFkBZAWQFUBWAGQFkBXgeK+1VvxP9xm8s6z6qaoWyVVb54k72qrv67QCyAogK4CsAMgKICuArADICiArQC5f2QI4rQCyAsgKICsAsgLICiArALICyAogKwCyAsgKICsAsgLICiArgKwAyAogK8AV/gIdHwQouLu6bQAAAABJRU5ErkJggg==" class="qr" alt="QR Code"></div>
           <div class="qr-label">Online Speisekarte</div>
         </div>
-        <div class="qr-cap" style="margin-top:6px;">Auf Google finden</div>
       </div>
     </div>
   </div>
@@ -262,11 +261,11 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
               <span class="dish-nr-tag">01</span>
               <div class="dish-name">Samosa</div>
             </div>
-            <span class="dish-price">ab 2,50 €</span>
+            <span class="dish-price">1 Stk. 2,50 €<br>2 Stk. 4,99 €</span>
           </div>
           <div class="dish-dari" dir="rtl">سمبوسه</div>
           <div class="dish-rule"></div>
-          <p class="dish-desc">Knusprig frittierte Teigtaschen gefüllt mit Gemüse, Kartoffeln & Sauce · 1 Stk.: 2,50 € / 2 Stk.: 4,99 €</p>
+          <p class="dish-desc">Knusprig frittierte Teigtaschen gefüllt mit Gemüse, Kartoffeln & Sauce</p>
         </div>
         <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_28.png" alt="Samosa" style="transform:scaleX(-1) scale(1)"></div>
       </div>
@@ -887,9 +886,9 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
   <div class="dr-cat-photos">
     <img src="images/_mk_cache/photo_ferni.png" style="height:90px;object-fit:contain;">
   </div>
-  <div class="dr-list"><div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">40</span><div class="li-left"><div class="li-name">Jelabi</div><div class="li-dari" dir="rtl">جلبی</div><div class="li-sub">pro Stück</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
-<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">41</span><div class="li-left"><div class="li-name">Afghaner Pudding</div><div class="li-dari" dir="rtl">فرنی</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
-<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">42</span><div class="li-left"><div class="li-name">Afghanes Eis-Creme</div><div class="li-dari" dir="rtl">آیس کریم</div></div><div class="li-dots"></div><div class="li-price">4,00 €</div></div>
+  <div class="dr-list"><div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">40</span><div class="li-left"><div class="li-name">Jelabi</div><div class="li-sub">pro Stück</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">41</span><div class="li-left"><div class="li-name">Afghaner Pudding</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">42</span><div class="li-left"><div class="li-name">Afghanes Eis-Creme</div></div><div class="li-dots"></div><div class="li-price">4,00 €</div></div>
 </div>
 </div></div>
   </div>
