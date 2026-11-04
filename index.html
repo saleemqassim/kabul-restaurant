@@ -159,19 +159,19 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
 .hours{display:inline-grid;grid-template-columns:auto auto;column-gap:28px;row-gap:5px;margin:6px 0 2px;font-family:var(--f-body);font-size:15.5px;color:var(--cream);}
 .hours span:nth-child(odd){text-align:left;}
 .hours span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;}
-.dr-section{font-family:var(--f-caps);font-size:19px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:5px;margin-bottom:10px;margin-top:12px;display:flex;align-items:center;gap:10px;}
-.dr-cat-row{display:flex;gap:24px;align-items:stretch;}
-.dr-cat-photos{display:flex;flex-direction:column;gap:4px;width:72px;flex-shrink:0;align-self:center;}
-.dr-cat-photos img{width:100%;aspect-ratio:1;object-fit:contain;}
+.dr-section{font-family:var(--f-caps);font-size:24px;font-weight:700;color:var(--gold);letter-spacing:4px;text-transform:uppercase;border-bottom:2px solid rgba(193,144,8,0.5);padding-bottom:7px;margin-bottom:14px;margin-top:18px;display:flex;align-items:center;gap:10px;}
+.dr-cat-row{display:flex;gap:28px;align-items:stretch;}
+.dr-cat-photos{display:flex;flex-direction:column;gap:5px;width:100px;flex-shrink:0;align-self:flex-start;max-height:280px;}
+.dr-cat-photos img{width:100%;height:64px;object-fit:contain;}
 .dr-list{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;}
-.dr-list-item{display:flex;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(193,144,8,0.14);gap:6px;}
+.dr-list-item{display:flex;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(193,144,8,0.18);gap:8px;}
 .dr-list-item:last-child{border-bottom:none;}
 .li-left{display:flex;flex-direction:column;flex-shrink:0;}
-.li-name{font-family:var(--f-serif);font-size:16px;font-weight:600;color:var(--cream);line-height:1.2;}
-.li-dari{font-family:var(--f-naskh);font-size:12px;color:var(--dari);direction:rtl;}
-.li-sub{font-family:var(--f-body);font-size:10px;color:rgba(242,236,216,0.45);font-style:italic;}
-.li-dots{flex:1;border-bottom:1px dotted rgba(193,144,8,0.4);margin-bottom:3px;min-width:20px;}
-.li-price{font-family:var(--f-caps);font-size:15px;font-weight:800;color:var(--gold);flex-shrink:0;}
+.li-name{font-family:var(--f-serif);font-size:19px;font-weight:600;color:var(--cream);line-height:1.2;}
+.li-dari{font-family:var(--f-naskh);font-size:14px;color:var(--dari);direction:rtl;}
+.li-sub{font-family:var(--f-body);font-size:12px;color:rgba(242,236,216,0.72);font-style:italic;}
+.li-dots{flex:1;border-bottom:1px dotted rgba(193,144,8,0.45);margin-bottom:4px;min-width:20px;}
+.li-price{font-family:var(--f-caps);font-size:18px;font-weight:800;color:var(--gold);flex-shrink:0;}
 /* ── ELEGANT COVER LAYOUT ── */
 .cov-wrap{position:absolute;inset:14mm;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:8px 44px 14px;}
 .cov-hband{width:100%;display:flex;flex-direction:column;align-items:center;}
@@ -259,12 +259,12 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">27</span>
+              <span class="dish-nr-tag">01</span>
               <div class="dish-name">Samosa</div>
             </div>
             <span class="dish-price">ab 2,50 €</span>
           </div>
-          <div class="dish-dari" dir="rtl">سمبوسه گیاهی</div>
+          <div class="dish-dari" dir="rtl">سمبوسه</div>
           <div class="dish-rule"></div>
           <p class="dish-desc">Knusprig frittierte Teigtaschen gefüllt mit Gemüse, Kartoffeln & Sauce · 1 Stk.: 2,50 € / 2 Stk.: 4,99 €</p>
         </div>
@@ -274,7 +274,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">28</span>
+              <span class="dish-nr-tag">02</span>
               <div class="dish-name name-compact">Bolani Kachalo</div>
             </div>
             <span class="dish-price">2,49 €</span>
@@ -289,7 +289,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">26</span>
+              <span class="dish-nr-tag">03</span>
               <div class="dish-name name-compact">Afghani Burger</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -298,7 +298,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
           <div class="dish-rule"></div>
           <p class="dish-desc">Saftige Rindswurst auf Afghani-Brot mit Pommes, Ei & Salat</p>
         </div>
-        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_27.png" alt="Afghani Burger" style="transform:scale(1)"></div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_27.png" alt="Afghani Burger" style="transform:scale(1.1)"></div>
       </div>
   </div>
 </div></div>
@@ -320,7 +320,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">22</span>
+              <span class="dish-nr-tag">04</span>
               <div class="dish-name">Kabuli Palau</div>
             </div>
             <span class="dish-price">8,50 €</span>
@@ -335,7 +335,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">01</span>
+              <span class="dish-nr-tag">05</span>
               <div class="dish-name">Mahicha Palau</div>
             </div>
             <span class="dish-price">16,00 €</span>
@@ -381,7 +381,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">02</span>
+              <span class="dish-nr-tag">07</span>
               <div class="dish-name">Mantu</div>
             </div>
             <span class="dish-price">12,90 €</span>
@@ -396,7 +396,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">15</span>
+              <span class="dish-nr-tag">08</span>
               <div class="dish-name">Ashak</div>
             </div>
             <span class="dish-price">12,90 €</span>
@@ -411,7 +411,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">03</span>
+              <span class="dish-nr-tag">09</span>
               <div class="dish-name">Shola</div>
             </div>
             <span class="dish-price">10,00 €</span>
@@ -442,7 +442,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">05</span>
+              <span class="dish-nr-tag">10</span>
               <div class="dish-name">Korma Morgh</div>
             </div>
             <span class="dish-price">11,90 €</span>
@@ -457,7 +457,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">04</span>
+              <span class="dish-nr-tag">11</span>
               <div class="dish-name">Borani Banjan</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -472,7 +472,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">23</span>
+              <span class="dish-nr-tag">12</span>
               <div class="dish-name">Pacha Suppe</div>
             </div>
             <span class="dish-price">10,00 €</span>
@@ -503,7 +503,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">07</span>
+              <span class="dish-nr-tag">13</span>
               <div class="dish-name">Mixgrill</div>
             </div>
             <span class="dish-price">24,50 €</span>
@@ -518,7 +518,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">09</span>
+              <span class="dish-nr-tag">14</span>
               <div class="dish-name">Kobida Kabab</div>
             </div>
             <span class="dish-price">16,00 €</span>
@@ -533,7 +533,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">10</span>
+              <span class="dish-nr-tag">15</span>
               <div class="dish-name name-compact">Lamm Tikka Kabab</div>
             </div>
             <span class="dish-price">17,00 €</span>
@@ -548,7 +548,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">20</span>
+              <span class="dish-nr-tag">16</span>
               <div class="dish-name">Lammkotelett</div>
             </div>
             <span class="dish-price">17,00 €</span>
@@ -579,7 +579,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">25</span>
+              <span class="dish-nr-tag">17</span>
               <div class="dish-name">Lamm Karahi</div>
             </div>
             <span class="dish-price">17,00 €</span>
@@ -594,7 +594,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">08</span>
+              <span class="dish-nr-tag">18</span>
               <div class="dish-name">Chapli Kabab</div>
             </div>
             <span class="dish-price">9,00 €</span>
@@ -609,7 +609,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">11</span>
+              <span class="dish-nr-tag">19</span>
               <div class="dish-name">Korma Kofta</div>
             </div>
             <span class="dish-price">11,00 €</span>
@@ -624,7 +624,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">12</span>
+              <span class="dish-nr-tag">20</span>
               <div class="dish-name">Dopiaza</div>
             </div>
             <span class="dish-price">13,90 €</span>
@@ -655,7 +655,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">33</span>
+              <span class="dish-nr-tag">21</span>
               <div class="dish-name">Kalb Karahi</div>
             </div>
             <span class="dish-price">15,00 €</span>
@@ -670,7 +670,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">19</span>
+              <span class="dish-nr-tag">22</span>
               <div class="dish-name">Chicken Kabab</div>
             </div>
             <span class="dish-price">15,50 €</span>
@@ -685,7 +685,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">24</span>
+              <span class="dish-nr-tag">23</span>
               <div class="dish-name name-compact">Hähnchen Karahi</div>
             </div>
             <span class="dish-price">13,50 €</span>
@@ -700,7 +700,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">21</span>
+              <span class="dish-nr-tag">24</span>
               <div class="dish-name">Fry Fish</div>
             </div>
             <span class="dish-price">14,90 €</span>
@@ -731,7 +731,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">13</span>
+              <span class="dish-nr-tag">25</span>
               <div class="dish-name">Spinatcurry</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -746,7 +746,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">14</span>
+              <span class="dish-nr-tag">26</span>
               <div class="dish-name">Blumenkohl</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -761,7 +761,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">16</span>
+              <span class="dish-nr-tag">27</span>
               <div class="dish-name">Loobia</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -776,7 +776,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">17</span>
+              <span class="dish-nr-tag">28</span>
               <div class="dish-name">Bamia</div>
             </div>
             <span class="dish-price">10,00 €</span>
@@ -785,7 +785,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
           <div class="dish-rule"></div>
           <p class="dish-desc">Zartes Okra geschmort in würziger Tomatensauce mit Koriander</p>
         </div>
-        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_12.png" alt="Bamia" style="transform:scale(0.97)"></div>
+        <div class="photo-wrap"><img class="photo-img" src="images/_mk_cache/photo_12.png" alt="Bamia" style="transform:scale(0.93)"></div>
       </div>
   </div>
 </div></div>
@@ -807,7 +807,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">18</span>
+              <span class="dish-nr-tag">29</span>
               <div class="dish-name">Nakhod</div>
             </div>
             <span class="dish-price">8,00 €</span>
@@ -822,7 +822,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">29</span>
+              <span class="dish-nr-tag">30</span>
               <div class="dish-name name-compact">Vegetarischer Teller</div>
             </div>
             <span class="dish-price">10,00 €</span>
@@ -837,7 +837,7 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
         <div class="bubble">
           <div class="dish-head">
             <div class="dish-nr-name">
-              <span class="dish-nr-tag">30</span>
+              <span class="dish-nr-tag">31</span>
               <div class="dish-name name-compact">Hähnchen Suppe</div>
             </div>
             <span class="dish-price">10,00 €</span>
@@ -871,21 +871,26 @@ html,body{margin:0;padding:0;background-color:var(--paper);width:210mm;}
     <img src="images/_mk_cache/drink_37.png">
     <img src="images/_mk_cache/drink_38.png">
   </div>
-  <div class="dr-list"><div class="dr-list-item"><div class="li-left"><div class="li-name">Cola</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Cola Zero</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Mezzo Mix</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Apfelschorle</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Wasser still</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Wasser sprudel</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Dough</div><div class="li-dari" dir="rtl">دوغ</div><div class="li-sub">Joghurt-Drink</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Tee</div><div class="li-dari" dir="rtl">چای</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
+  <div class="dr-list"><div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">32</span><div class="li-left"><div class="li-name">Cola</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">33</span><div class="li-left"><div class="li-name">Cola Zero</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">34</span><div class="li-left"><div class="li-name">Mezzo Mix</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">35</span><div class="li-left"><div class="li-name">Apfelschorle</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">36</span><div class="li-left"><div class="li-name">Wasser still</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">37</span><div class="li-left"><div class="li-name">Wasser sprudel</div></div><div class="li-dots"></div><div class="li-price">2,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">38</span><div class="li-left"><div class="li-name">Dough</div><div class="li-sub">Joghurt-Drink</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">39</span><div class="li-left"><div class="li-name">Tee</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
 </div>
 </div>
 <div style="margin-top:16px;">
 <div class="dr-section">Nachtisch</div>
-<div class="dr-list" style="max-width:420px;"><div class="dr-list-item"><div class="li-left"><div class="li-name">Jelabi</div><div class="li-dari" dir="rtl">جلبی</div><div class="li-sub">pro Stück</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Afghanischer Pudding</div><div class="li-dari" dir="rtl">فرنی</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
-<div class="dr-list-item"><div class="li-left"><div class="li-name">Afghanisches Eis-Creme</div><div class="li-dari" dir="rtl">آیس کریم</div></div><div class="li-dots"></div><div class="li-price">4,00 €</div></div>
+<div class="dr-cat-row">
+  <div class="dr-cat-photos">
+    <img src="images/_mk_cache/photo_ferni.png" style="height:90px;object-fit:contain;">
+  </div>
+  <div class="dr-list"><div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">40</span><div class="li-left"><div class="li-name">Jelabi</div><div class="li-dari" dir="rtl">جلبی</div><div class="li-sub">pro Stück</div></div><div class="li-dots"></div><div class="li-price">1,50 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">41</span><div class="li-left"><div class="li-name">Afghaner Pudding</div><div class="li-dari" dir="rtl">فرنی</div></div><div class="li-dots"></div><div class="li-price">3,00 €</div></div>
+<div class="dr-list-item"><span class="dish-nr-tag" style="font-size:11px;min-width:22px;padding:1px 4px;margin-right:6px;flex-shrink:0;">42</span><div class="li-left"><div class="li-name">Afghanes Eis-Creme</div><div class="li-dari" dir="rtl">آیس کریم</div></div><div class="li-dots"></div><div class="li-price">4,00 €</div></div>
+</div>
 </div></div>
   </div>
 </div></div>
